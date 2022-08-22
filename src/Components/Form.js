@@ -18,6 +18,34 @@ function Form() {
           </form>
         </div>
       </section>
+      <section>
+        <div>
+          <h3>Education</h3>
+          <form className="form personal-info">
+            <input type="text" name="university" placeholder="university" />
+            <input type="text" name="degree" placeholder="degree" />
+            <input type="text" name="subject" placeholder="subject" />
+            <input type="text" name="from" placeholder="from" />
+            <input type="text" name="to" placeholder="to" />
+            <button>add</button>
+            <button>delete</button>
+          </form>
+        </div>
+      </section>
+      <section>
+        <div>
+          <h3>Experience</h3>
+          <form className="form personal-info">
+            <input type="text" name="position" placeholder="position" />
+            <input type="text" name="company" placeholder="company" />
+            <input type="text" name="city" placeholder="city" />
+            <input type="text" name="from" placeholder="from" />
+            <input type="text" name="to" placeholder="to" />
+            <button>add</button>
+            <button>delete</button>
+          </form>
+        </div>
+      </section>
     </article>
   );
 }
