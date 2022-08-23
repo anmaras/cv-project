@@ -2,11 +2,11 @@ import React from 'react';
 
 function Form() {
   return (
-    <article>
+    <article className="form-container">
       <section>
         <div>
           <h3>Personal info</h3>
-          <form className="form personal-info">
+          <form className="personal-info form">
             <input type="text" name="firstName" placeholder="firstName" />
             <input type="text" name="lastName" placeholder="lastName" />
             <input type="text" name="title" placeholder="job title" />
@@ -21,7 +21,7 @@ function Form() {
       <section>
         <div>
           <h3>Education</h3>
-          <form className="form personal-info">
+          <form className="education-info form">
             <input type="text" name="university" placeholder="university" />
             <input type="text" name="degree" placeholder="degree" />
             <input type="text" name="subject" placeholder="subject" />
@@ -35,7 +35,7 @@ function Form() {
       <section>
         <div>
           <h3>Experience</h3>
-          <form className="form personal-info">
+          <form className="experience-info form">
             <input type="text" name="position" placeholder="position" />
             <input type="text" name="company" placeholder="company" />
             <input type="text" name="city" placeholder="city" />

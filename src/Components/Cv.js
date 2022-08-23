@@ -3,13 +3,13 @@ import React from 'react';
 function Cv() {
   return (
     <article className="cv">
-      <header className="cv-header">
+      <section className="cv-header">
         <section>
-          <div className="cv-header_info_primary">
+          <div className="cv-info_primary">
             <h2>Name</h2>
             <p>Job description</p>
           </div>
-          <div className="cv-header_info-secondary">
+          <div className="cv-info-secondary">
             <ul>
               <li>
                 <p>phone</p>
@@ -37,24 +37,24 @@ function Cv() {
             </p>
           </div>
         </section>
-      </header>
-      <section className="cv-main__container">
-        <section className="experience">
+      </section>
+      <section className="cv-main__section">
+        <div className="cv-experience__container">
           <h3>Professional Experience</h3>
-          <div className="company-info">
-            <h4 className="title">Company name</h4>
-            <p className="location">company location</p>
-            <p className="period">period of working in tha company</p>
-            <p className="position">position in the company</p>
+          <div className="cv-company-info">
+            <h4 className="cv-title">Company name</h4>
+            <p className="cv-location">company location</p>
+            <p className="cv-period">period of working in tha company</p>
+            <p className="cv-position">position in the company</p>
           </div>
-        </section>
-        <section className="education">
-          <div className="education-container">
+        </div>
+        <section className="cv-education-section">
+          <div className="cv-education__container">
             <h3>Education</h3>
-            <div className="education-info">
-              <p className="university">Uni name</p>
-              <p className="degree">degree</p>
-              <p className="subject">subject</p>
+            <div className="cv-education-info">
+              <p className="cv-university">Uni name</p>
+              <p className="cv-degree">degree</p>
+              <p className="cv-subject">subject</p>
             </div>
           </div>
         </section>
