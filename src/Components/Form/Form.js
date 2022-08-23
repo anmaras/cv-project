@@ -1,6 +1,6 @@
 import React from 'react';
-import FormEducationList from './FormEducationList';
-import FormProExperienceList from './FormProExperienceList';
+import FormEducationList from './FormEducation/FormEducationList';
+import FormProExperienceList from './FormExperience/FormProExperienceList';
 
 function Form() {
   return (

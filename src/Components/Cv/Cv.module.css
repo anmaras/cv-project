@@ -1,0 +1,9 @@
+.cv {
+  background-color: bisque;
+}
+
+.cv-main {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 2fr;
+}
