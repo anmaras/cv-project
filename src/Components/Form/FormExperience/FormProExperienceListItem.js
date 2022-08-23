@@ -1,8 +1,9 @@
 import React from 'react';
+import style from '../Form.module.css';
 
 function FormProExperienceListItem() {
   return (
-    <form className="experience-info form">
+    <form className={style.form}>
       <input type="text" name="position" placeholder="position" />
       <input type="text" name="company" placeholder="company" />
       <input type="text" name="city" placeholder="city" />

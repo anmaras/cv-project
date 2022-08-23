@@ -1,8 +1,9 @@
 import React from 'react';
+import style from '../Form.module.css';
 
 function FormEducationListItem() {
   return (
-    <form className="education-info form">
+    <form className={style.form}>
       <input type="text" name="university" placeholder="university" />
       <input type="text" name="degree" placeholder="degree" />
       <input type="text" name="subject" placeholder="subject" />
