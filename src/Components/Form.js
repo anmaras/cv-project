@@ -1,9 +1,11 @@
 import React from 'react';
+import FormEducationList from './FormEducationList';
+import FormProExperienceList from './FormProExperienceList';
 
 function Form() {
   return (
     <article className="form-container">
-      <section>
+      <section className="form__personal-info__section">
         <div>
           <h3>Personal info</h3>
           <form className="personal-info form">
@@ -18,33 +20,11 @@ function Form() {
           </form>
         </div>
       </section>
-      <section>
-        <div>
-          <h3>Education</h3>
-          <form className="education-info form">
-            <input type="text" name="university" placeholder="university" />
-            <input type="text" name="degree" placeholder="degree" />
-            <input type="text" name="subject" placeholder="subject" />
-            <input type="text" name="from" placeholder="from" />
-            <input type="text" name="to" placeholder="to" />
-            <button>add</button>
-            <button>delete</button>
-          </form>
-        </div>
+      <section className="form__education-info__section">
+        <FormEducationList />
       </section>
-      <section>
-        <div>
-          <h3>Experience</h3>
-          <form className="experience-info form">
-            <input type="text" name="position" placeholder="position" />
-            <input type="text" name="company" placeholder="company" />
-            <input type="text" name="city" placeholder="city" />
-            <input type="text" name="from" placeholder="from" />
-            <input type="text" name="to" placeholder="to" />
-            <button>add</button>
-            <button>delete</button>
-          </form>
-        </div>
+      <section className="form__experience-info__section">
+        <FormProExperienceList />
       </section>
     </article>
   );
