@@ -1,12 +1,19 @@
 import React from 'react';
+import style from './CvProExperience.module.css';
 
 function CvProExperienceItem() {
   return (
-    <div className="cv-company-info">
-      <h4 className="cv-title">Company name</h4>
-      <p className="cv-location">company location</p>
-      <p className="cv-period">period of working in tha company</p>
-      <p className="cv-position">position in the company</p>
+    <div className={style['company-wrapper']}>
+      <p className={style['company-name']}>post faust</p>
+      <p className={style.location}>athens</p>
+      <p className={style.period}>
+        <span>2016 - 2021</span>
+      </p>
+      <p className={style['job-position']}>3D/Lighting Artist</p>
+      <p className={style['job-description']}>
+        I was responsible for the look development, lighting and rendering
+        multiple sequences for various TV commercials.
+      </p>
     </div>
   );
 }

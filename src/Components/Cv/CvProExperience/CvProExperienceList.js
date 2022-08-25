@@ -1,12 +1,15 @@
 import React from 'react';
 import CvProExperienceItem from './CvProExperienceItem';
+import style from './CvProExperience.module.css';
 
 function CvProExperienceList() {
   return (
-    <div className="cv-experience__container">
-      <h3>Professional Experience</h3>
-      <CvProExperienceItem />
-    </div>
+    <section className={style['pro-section']}>
+      <h4>Professional Experience</h4>
+      <div>
+        <CvProExperienceItem />
+      </div>
+    </section>
   );
 }
 

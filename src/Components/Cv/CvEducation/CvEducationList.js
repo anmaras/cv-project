@@ -1,10 +1,15 @@
 import React from 'react';
 import CvEducationItem from './CvEducationItem';
+import style from './CvEducation.module.css';
+
 function CvEducationList() {
   return (
-    <section className="cv-education-section">
-      <div className="cv-education__container">
-        <h3>Education</h3>
+    <section className={style['education-section']}>
+      <h4>Education</h4>
+      <div className={style['education-list-wrapper']}>
+        <CvEducationItem />
+        <CvEducationItem />
+        <CvEducationItem />
         <CvEducationItem />
       </div>
     </section>

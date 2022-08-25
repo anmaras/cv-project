@@ -9,6 +9,7 @@ function FormProExperienceListItem() {
       <input type="text" name="city" placeholder="city" />
       <input type="text" name="from" placeholder="from" />
       <input type="text" name="to" placeholder="to" />
+      <input type="text" name="description" placeholder="job description" />
       <button>add</button>
       <button>delete</button>
     </form>
