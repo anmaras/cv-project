@@ -1,18 +1,26 @@
 import React from 'react';
 import style from './CvEducation.module.css';
+import { useGlobalContext } from '../../../Context';
 
 function CvEducationItem() {
+  const { state } = useGlobalContext();
+  const { university, subject, degree, yearFrom, yearTo } = state;
+
+  const from = yearFrom ? yearFrom : 'from';
+  const to = yearTo ? yearFrom : 'to';
+  const uniName = university ? university : 'University Name';
+  const studiesSubject = subject ? subject : 'Studies Subject';
+  const uniDegree = degree ? degree : 'Degree';
+
   return (
     <div className={style['education-list-item']}>
       <p className={style.period}>
-        <span>2004</span> - <span>2008</span>
+        <span>{from}</span> - <span>{to}</span>
       </p>
       <div className={style['list-item-detail']}>
-        <p className={style.subject}>furniture design</p>
-        <p className={style.uni}>
-          Technological Educational Institute of Larissa lor
-        </p>
-        <p className={style.degree}>bachelor</p>
+        <p className={style.subject}>{studiesSubject}</p>
+        <p className={style.uni}>{uniName}</p>
+        <p className={style.degree}>{uniDegree}</p>
       </div>
     </div>
   );

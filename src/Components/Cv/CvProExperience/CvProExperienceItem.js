@@ -1,18 +1,37 @@
 import React from 'react';
 import style from './CvProExperience.module.css';
+import { useGlobalContext } from '../../../Context';
 
 function CvProExperienceItem() {
+  const { state } = useGlobalContext();
+  const {
+    position,
+    company,
+    companyCity,
+    workDescription,
+    workingFrom,
+    workingTo,
+  } = state;
+
   return (
     <div className={style['company-wrapper']}>
-      <p className={style['company-name']}>post faust</p>
-      <p className={style.location}>athens</p>
-      <p className={style.period}>
-        <span>2016 - 2021</span>
+      <p className={style['company-name']}>
+        {company ? company : 'Company Name'}
       </p>
-      <p className={style['job-position']}>3D/Lighting Artist</p>
+      <p className={style.location}>{companyCity ? companyCity : 'City'}</p>
+      <p className={style.period}>
+        <span>
+          {workingFrom ? workingFrom : 'YYYY'} -{' '}
+          {workingTo ? workingTo : 'YYYY'}
+        </span>
+      </p>
+      <p className={style['job-position']}>
+        {position ? position : 'Your position in that company'}
+      </p>
       <p className={style['job-description']}>
-        I was responsible for the look development, lighting and rendering
-        multiple sequences for various TV commercials.
+        {workDescription
+          ? workDescription
+          : 'A few words about your work on that company'}
       </p>
     </div>
   );
