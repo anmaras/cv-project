@@ -1,7 +1,6 @@
 /* Form style */
 .forms-container {
   display: grid;
-  padding: 1rem;
 }
 
 .form-wrapper {

@@ -1,6 +1,7 @@
 .cv-header {
   display: grid;
   grid-auto-flow: row;
+  border-bottom: 1px solid black;
 }
 
 @media (min-width: 1440px) {
@@ -30,10 +31,6 @@
 .link-list {
   width: 90%;
   margin: auto;
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  gap: 1rem; */
 
   display: grid;
   grid-template-columns: auto auto;
@@ -56,18 +53,20 @@
 }
 
 .info-secondary__section {
-  /* background-color: #ccc; */
+  border-left: 1px solid black;
 }
 
 .title {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 3px;
+  font-size: inherit;
 }
 
 .description {
   font-size: 0.8rem;
 }
+
 .name,
 .title {
   padding-bottom: 1rem;
@@ -75,5 +74,5 @@
 
 .description__wrapper,
 .name-job__wrapper {
-  padding: 1rem;
+  /* padding: 1rem; */
 }
