@@ -1,11 +1,7 @@
 import React from 'react';
 import style from './CvEducation.module.css';
-import { useGlobalContext } from '../../../Context';
 
-function CvEducationItem() {
-  const { state } = useGlobalContext();
-  const { university, subject, degree, yearFrom, yearTo } = state;
-
+function CvEducationItem({ university, subject, degree, yearFrom, yearTo }) {
   const from = yearFrom ? yearFrom : 'from';
   const to = yearTo ? yearFrom : 'to';
   const uniName = university ? university : 'University Name';
