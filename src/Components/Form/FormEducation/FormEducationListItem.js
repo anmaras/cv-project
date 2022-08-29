@@ -1,53 +1,37 @@
-import React from 'react';
 import style from '../Form.module.css';
 import { useGlobalContext } from '../../../Context';
 
-function FormEducationListItem() {
-  const { state, year, onChangeHandler } = useGlobalContext();
+function FormEducationListItem({ id, type, name }) {
+  const { removeItemFromLists, onChangeHandler, educationFormList } =
+    useGlobalContext();
 
-  const { university, degree, subject, yearFrom, yearTo } = state;
   return (
-    <form className={style.form}>
-      <input
-        type="text"
-        name="university"
-        placeholder="university"
-        onChange={onChangeHandler}
-        value={university}
-      />
-      <input
-        type="text"
-        name="degree"
-        placeholder="degree"
-        onChange={onChangeHandler}
-        value={degree}
-      />
-      <input
-        type="text"
-        name="subject"
-        placeholder="subject"
-        onChange={onChangeHandler}
-        value={subject}
-      />
-      <input
-        type="number"
-        name="yearFrom"
-        placeholder="from"
-        min="1950"
-        onChange={onChangeHandler}
-        value={yearFrom}
-      />
-      <input
-        type="number"
-        name="yearTo"
-        placeholder="to"
-        max={year}
-        onChange={onChangeHandler}
-        value={yearTo}
-      />
-      <button>add</button>
-      <button>delete</button>
-    </form>
+    <>
+      <form className={style.form}>
+        {name.map((formItem, index) => {
+          const formObject = educationFormList.find((item) => item.id === id);
+          return (
+            <input
+              key={index}
+              type={type}
+              name={formItem}
+              placeholder={formItem}
+              onChange={(e) => {
+                onChangeHandler(e, id);
+              }}
+              value={formObject[formItem]}
+            />
+          );
+        })}
+        <button
+          onClick={(e) => {
+            removeItemFromLists(e, id);
+          }}
+        >
+          delete
+        </button>
+      </form>
+    </>
   );
 }
 
