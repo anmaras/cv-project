@@ -1,14 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormEducationList from './FormEducation/FormEducationList';
 import FormProExperienceList from './FormExperience/FormProExperienceList';
 import style from './Form.module.css';
 import { useGlobalContext } from '../../Context';
+import uuid from 'react-uuid';
+
+const linkListData = [
+  {
+    socialLink: 'twitter',
+    socialLinkUrl: '',
+    id: uuid(),
+  },
+];
 
 function Form() {
   const { personalInfo, personalInfoOnChangeHandler, resetForms } =
     useGlobalContext();
   const { name, title, email, phone, city, linkedin, portfolio, profile } =
     personalInfo;
+  const [isLinksOpen, setIsLinksOpen] = useState(false);
+  const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
+  const [linkList, setLinkList] = useState(linkListData);
+
+  const addToLinkListHandler = () => {
+    const { id, ...linksListData } = linkListData[0];
+    const newLinkItem = {
+      id: uuid(),
+      ...linksListData,
+    };
+    setLinkList([...linkList, newLinkItem]);
+
+    if (linkList.length > 1) {
+      setIsLinkListMaxed(true);
+    } else {
+      setIsLinkListMaxed(false);
+    }
+  };
+
+  const deleteFromLinkList = (id) => {
+    const newLinkList = linkList.filter((item) => item.id !== id);
+    setLinkList(newLinkList);
+  };
+
+  console.log(linkList.length);
+  console.log(linkList);
 
   return (
     <article className={style['forms-container']}>
@@ -72,6 +107,36 @@ function Form() {
             value={profile}
           />
         </form>
+        <div className={style['links-section']}>
+          <button onClick={() => setIsLinksOpen(!isLinksOpen)}>
+            Add links
+          </button>
+          {isLinksOpen && (
+            <div>
+              {linkList.map((linkItem) => {
+                return (
+                  <div key={linkItem.id}>
+                    <label htmlFor="selectLinks">Social Website</label>
+                    <select name="links" id="selectLinks">
+                      <option value="twitter">Twitter</option>
+                      <option value="website">Website</option>
+                      <option value="linkedin">Linkedin</option>
+                    </select>
+                    <label htmlFor="linkUrl">Social Link</label>
+                    <input type="text"></input>
+                    <button onClick={() => deleteFromLinkList(linkItem.id)}>
+                      del
+                    </button>
+                  </div>
+                );
+              })}
+
+              {!isLinkListMaxed && (
+                <button onClick={addToLinkListHandler}>Add more links</button>
+              )}
+            </div>
+          )}
+        </div>
       </div>
       <FormEducationList />
       <FormProExperienceList />
