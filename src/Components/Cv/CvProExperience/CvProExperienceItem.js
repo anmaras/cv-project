@@ -2,17 +2,14 @@ import React from 'react';
 import style from './CvProExperience.module.css';
 import { useGlobalContext } from '../../../Context';
 
-function CvProExperienceItem() {
-  const { state } = useGlobalContext();
-  const {
-    position,
-    company,
-    companyCity,
-    workDescription,
-    workingFrom,
-    workingTo,
-  } = state;
-
+function CvProExperienceItem({
+  position,
+  company,
+  companyCity,
+  workDescription,
+  workingFrom,
+  workingTo,
+}) {
   return (
     <div className={style['company-wrapper']}>
       <p className={style['company-name']}>
