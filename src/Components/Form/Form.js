@@ -5,11 +5,10 @@ import style from './Form.module.css';
 import { useGlobalContext } from '../../Context';
 
 function Form() {
-  const { state, onChangeHandler, resetForms } = useGlobalContext();
+  const { personalInfo, personalInfoOnChangeHandler, resetForms } =
+    useGlobalContext();
   const { name, title, email, phone, city, linkedin, portfolio, profile } =
-    state;
-
-  console.log(state);
+    personalInfo;
 
   return (
     <article className={style['forms-container']}>
@@ -20,21 +19,21 @@ function Form() {
             type="text"
             name="name"
             placeholder="Type your name..."
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={name}
           />
           <input
             type="text"
             name="title"
             placeholder="job title"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={title}
           />
           <input
             type="text"
             name="email"
             placeholder="email"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={email}
           />
           <input
@@ -42,34 +41,34 @@ function Form() {
             name="phone"
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
             placeholder="phone number"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={phone}
           />
           <input
             type="text"
             name="city"
             placeholder="city"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={city}
           />
           <input
             type="url"
             name="linkedin"
             placeholder="linkedin url"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={linkedin}
           />
           <input
             type="url"
             name="portfolio"
             placeholder="portfolio url"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={portfolio}
           />
           <textarea
             name="profile"
             placeholder="description"
-            onChange={onChangeHandler}
+            onChange={personalInfoOnChangeHandler}
             value={profile}
           />
         </form>
