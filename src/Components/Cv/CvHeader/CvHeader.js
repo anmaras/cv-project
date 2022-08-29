@@ -5,9 +5,8 @@ import style from './CvHeader.module.css';
 import { useGlobalContext } from '../../../Context';
 
 function CvHeader() {
-  const { state } = useGlobalContext();
-  const { name, title, email, phone, city, linkedin, portfolio, profile } =
-    state;
+  const { personalInfo } = useGlobalContext();
+  const { name, title, email, phone, city, linkedin, profile } = personalInfo;
   return (
     <section className={style['cv-header']}>
       <section className={style['info-primary__section']}>
