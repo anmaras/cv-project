@@ -47,12 +47,54 @@ const expFormListInitialValue = [
   },
 ];
 
+const linkListData = [
+  {
+    socialLink: 'twitter',
+    socialLinkUrl: '',
+    id: uuid(),
+  },
+];
+
 function Context({ children }) {
   const [personalInfo, setPersonalInfo] = useState(personalData);
   const [educationFormList, setEducationFormList] = useState(
     eduFormListInitialValue
   );
   const [workXpFormList, setWorkXpFormList] = useState(expFormListInitialValue);
+  const [isLinksOpen, setIsLinksOpen] = useState(false);
+  const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
+  const [linkList, setLinkList] = useState(linkListData);
+
+  /*---- HEADER LINKS FUNCTIONALITY START ----*/
+
+  const addToLinkListHandler = () => {
+    const { id, ...linksListData } = linkListData[0];
+    if (linkList.length > 2) {
+      setIsLinkListMaxed(true);
+    }
+
+    const newLinkItem = {
+      id: uuid(),
+      ...linksListData,
+    };
+    setLinkList([...linkList, newLinkItem]);
+  };
+
+  const deleteFromLinkList = (id) => {
+    const newLinkList = linkList.filter((item) => item.id !== id);
+    setLinkList(newLinkList);
+
+    if (newLinkList.length < 3) {
+      setIsLinkListMaxed(false);
+    }
+    /* Close the main link container */
+    if (!newLinkList.length) {
+      setIsLinksOpen(false);
+      setLinkList(linkList);
+    }
+  };
+
+  /*---- HEADER LINKS FUNCTIONALITY END ----*/
 
   const personalInfoOnChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -92,6 +134,17 @@ function Context({ children }) {
         }
       })
     );
+
+    setLinkList(
+      linkList.map((item) => {
+        if (item.id === id) {
+          return { ...item, [name]: value };
+        } else {
+          return { ...item };
+        }
+      })
+    );
+
     setWorkXpFormList(
       workXpFormList.map((item) => {
         if (item.id === id) {
@@ -130,6 +183,12 @@ function Context({ children }) {
         resetForms,
         addToWorkXpList,
         workXpFormList,
+        isLinksOpen,
+        isLinkListMaxed,
+        linkList,
+        addToLinkListHandler,
+        deleteFromLinkList,
+        setIsLinksOpen,
       }}
     >
       {children}
