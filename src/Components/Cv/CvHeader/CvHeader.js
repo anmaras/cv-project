@@ -1,12 +1,19 @@
 import React from 'react';
-import { FaPhone, FaHome, FaLinkedin } from 'react-icons/fa';
+import {
+  FaPhone,
+  FaHome,
+  FaLinkedin,
+  FaTwitter,
+  FaGithub,
+} from 'react-icons/fa';
+import { CgWebsite } from 'react-icons/cg';
 import { MdEmail } from 'react-icons/md';
 import style from './CvHeader.module.css';
 import { useGlobalContext } from '../../../Context';
 
 function CvHeader() {
-  const { personalInfo } = useGlobalContext();
-  const { name, title, email, phone, city, linkedin, profile } = personalInfo;
+  const { personalInfo, linkList, isLinksOpen } = useGlobalContext();
+  const { name, title, email, phone, city, profile } = personalInfo;
   return (
     <section className={style['cv-header']}>
       <section className={style['info-primary__section']}>
@@ -39,14 +46,31 @@ function CvHeader() {
               {city ? city : 'Your city'}
             </p>
           </li>
-          <li>
-            <a href=".">
-              <span>
-                <FaLinkedin />
-              </span>
-              {linkedin ? linkedin : 'Your Linkedin '}
-            </a>
-          </li>
+        </ul>
+        <ul>
+          {linkList.length &&
+            isLinksOpen &&
+            linkList.map((link) => {
+              const { socialLinkUrl, socialLink, id } = link;
+              return (
+                <li key={id}>
+                  <a href={socialLinkUrl} target="_blank" rel="noreferrer">
+                    <span>
+                      {socialLink === 'linkedin' ? (
+                        <FaLinkedin />
+                      ) : socialLink === 'website' ? (
+                        <CgWebsite />
+                      ) : socialLink === 'twitter' ? (
+                        <FaTwitter />
+                      ) : (
+                        <FaGithub />
+                      )}
+                    </span>
+                    {socialLink}
+                  </a>
+                </li>
+              );
+            })}
         </ul>
       </section>
       <section className={style['info-secondary__section']}>
