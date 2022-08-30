@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { editListState, removeFromLists } from './Utilities';
 import uuid from 'react-uuid';
 
 const AppContext = React.createContext();
@@ -24,10 +25,12 @@ const eduFormListInitialValue = [
     degree: '',
     yearFrom: '',
     yearTo: '',
+    checkbox: false,
   },
 ];
 const expFormListInitialValue = [
   {
+    checkbox: false,
     type: 'text',
     name: [
       'position',
@@ -47,13 +50,11 @@ const expFormListInitialValue = [
   },
 ];
 
-const linkListData = [
-  {
-    socialLink: 'twitter',
-    socialLinkUrl: '',
-    id: uuid(),
-  },
-];
+const linkListData = {
+  socialLink: 'twitter',
+  socialLinkUrl: '',
+  id: uuid(),
+};
 
 function Context({ children }) {
   const [personalInfo, setPersonalInfo] = useState(personalData);
@@ -63,15 +64,13 @@ function Context({ children }) {
   const [workXpFormList, setWorkXpFormList] = useState(expFormListInitialValue);
   const [isLinksOpen, setIsLinksOpen] = useState(false);
   const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
-  const [linkList, setLinkList] = useState(linkListData);
+  const [linkList, setLinkList] = useState([linkListData]);
 
   /*---- HEADER LINKS FUNCTIONALITY START ----*/
 
   const addToLinkListHandler = () => {
-    const { id, ...linksListData } = linkListData[0];
-    if (linkList.length > 2) {
-      setIsLinkListMaxed(true);
-    }
+    /* Remove id from initial object */
+    const { id, ...linksListData } = linkListData;
 
     const newLinkItem = {
       id: uuid(),
@@ -81,20 +80,20 @@ function Context({ children }) {
   };
 
   const deleteFromLinkList = (id) => {
-    const newLinkList = linkList.filter((item) => item.id !== id);
-    setLinkList(newLinkList);
-
-    if (newLinkList.length < 3) {
-      setIsLinkListMaxed(false);
-    }
-    /* Close the main link container */
-    if (!newLinkList.length) {
-      setIsLinksOpen(false);
-      setLinkList(linkList);
-    }
+    setLinkList(removeFromLists(linkList, id));
   };
 
-  /*---- HEADER LINKS FUNCTIONALITY END ----*/
+  useEffect(() => {
+    if (linkList.length > 3) {
+      setIsLinkListMaxed(true);
+    } else {
+      setIsLinkListMaxed(false);
+    }
+    if (!linkList.length) {
+      setIsLinksOpen(false);
+      setLinkList([linkListData]);
+    }
+  }, [linkList.length]);
 
   const personalInfoOnChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -104,6 +103,8 @@ function Context({ children }) {
       [name]: value,
     });
   };
+
+  /*---- HEADER LINKS FUNCTIONALITY END ----*/
 
   const addToEducationList = () => {
     const newEducationFormItem = {
@@ -125,43 +126,15 @@ function Context({ children }) {
   const onChangeHandler = (e, id) => {
     const { value, name } = e.target;
 
-    setEducationFormList(
-      educationFormList.map((item) => {
-        if (item.id === id) {
-          return { ...item, [name]: value };
-        } else {
-          return { ...item };
-        }
-      })
-    );
-
-    setLinkList(
-      linkList.map((item) => {
-        if (item.id === id) {
-          return { ...item, [name]: value };
-        } else {
-          return { ...item };
-        }
-      })
-    );
-
-    setWorkXpFormList(
-      workXpFormList.map((item) => {
-        if (item.id === id) {
-          return { ...item, [name]: value };
-        } else {
-          return { ...item };
-        }
-      })
-    );
+    setEducationFormList(editListState(educationFormList, id, name, value));
+    setLinkList(editListState(linkList, id, name, value));
+    setWorkXpFormList(editListState(workXpFormList, id, name, value));
   };
 
   const removeItemFromLists = (e, id) => {
     e.preventDefault();
-    const newEducFormList = educationFormList.filter((form) => form.id !== id);
-    const newExpFormList = workXpFormList.filter((form) => form.id !== id);
-    setEducationFormList(newEducFormList);
-    setWorkXpFormList(newExpFormList);
+    setEducationFormList(removeFromLists(educationFormList, id));
+    setWorkXpFormList(removeFromLists(workXpFormList, id));
   };
 
   const resetForms = () => {
