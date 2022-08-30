@@ -41,6 +41,9 @@ function Form() {
     if (newLinkList.length < 3) {
       setIsLinkListMaxed(false);
     }
+    if (!newLinkList.length) {
+      setIsLinksOpen(false);
+    }
   };
 
   console.log(linkList.length);
