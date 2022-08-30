@@ -43,6 +43,7 @@ function Form() {
     }
     if (!newLinkList.length) {
       setIsLinksOpen(false);
+      setLinkList(linkList);
     }
   };
 
