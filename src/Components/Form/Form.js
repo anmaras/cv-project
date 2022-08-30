@@ -1,54 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FormEducationList from './FormEducation/FormEducationList';
 import FormProExperienceList from './FormExperience/FormProExperienceList';
 import style from './Form.module.css';
 import { useGlobalContext } from '../../Context';
-import uuid from 'react-uuid';
-
-const linkListData = [
-  {
-    socialLink: 'twitter',
-    socialLinkUrl: '',
-    id: uuid(),
-  },
-];
 
 function Form() {
-  const { personalInfo, personalInfoOnChangeHandler, resetForms } =
-    useGlobalContext();
-  const { name, title, email, phone, city, linkedin, portfolio, profile } =
-    personalInfo;
-  const [isLinksOpen, setIsLinksOpen] = useState(false);
-  const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
-  const [linkList, setLinkList] = useState(linkListData);
-
-  const addToLinkListHandler = () => {
-    const { id, ...linksListData } = linkListData[0];
-    if (linkList.length > 1) {
-      setIsLinkListMaxed(true);
-    }
-
-    const newLinkItem = {
-      id: uuid(),
-      ...linksListData,
-    };
-    setLinkList([...linkList, newLinkItem]);
-  };
-
-  const deleteFromLinkList = (id) => {
-    const newLinkList = linkList.filter((item) => item.id !== id);
-    setLinkList(newLinkList);
-    if (newLinkList.length < 3) {
-      setIsLinkListMaxed(false);
-    }
-    if (!newLinkList.length) {
-      setIsLinksOpen(false);
-      setLinkList(linkList);
-    }
-  };
-
-  console.log(linkList.length);
-  console.log(linkList);
+  const {
+    personalInfo,
+    personalInfoOnChangeHandler,
+    resetForms,
+    isLinksOpen,
+    isLinkListMaxed,
+    linkList,
+    addToLinkListHandler,
+    deleteFromLinkList,
+    setIsLinksOpen,
+    onChangeHandler,
+  } = useGlobalContext();
+  const { name, title, email, phone, city, profile } = personalInfo;
 
   return (
     <article className={style['forms-container']}>
@@ -91,20 +60,6 @@ function Form() {
             onChange={personalInfoOnChangeHandler}
             value={city}
           />
-          <input
-            type="url"
-            name="linkedin"
-            placeholder="linkedin url"
-            onChange={personalInfoOnChangeHandler}
-            value={linkedin}
-          />
-          <input
-            type="url"
-            name="portfolio"
-            placeholder="portfolio url"
-            onChange={personalInfoOnChangeHandler}
-            value={portfolio}
-          />
           <textarea
             name="profile"
             placeholder="description"
@@ -112,6 +67,7 @@ function Form() {
             value={profile}
           />
         </form>
+
         <div className={style['links-section']}>
           <button onClick={() => setIsLinksOpen(!isLinksOpen)}>
             Add links
@@ -119,19 +75,29 @@ function Form() {
           {isLinksOpen && (
             <div>
               {linkList.map((linkItem) => {
+                const { socialLink, id, socialLinkUrl } = linkItem;
                 return (
-                  <div key={linkItem.id}>
+                  <div key={id}>
                     <label htmlFor="selectLinks">Social Website</label>
-                    <select name="links" id="selectLinks">
+                    <select
+                      name="socialLink"
+                      id="selectLinks"
+                      onChange={(e) => onChangeHandler(e, id)}
+                      value={socialLink}
+                    >
                       <option value="twitter">Twitter</option>
                       <option value="website">Website</option>
                       <option value="linkedin">Linkedin</option>
+                      <option value="github">Github</option>
                     </select>
                     <label htmlFor="linkUrl">Social Link</label>
-                    <input type="text"></input>
-                    <button onClick={() => deleteFromLinkList(linkItem.id)}>
-                      del
-                    </button>
+                    <input
+                      type="text"
+                      name="socialLinkUrl"
+                      onChange={(e) => onChangeHandler(e, id)}
+                      value={socialLinkUrl}
+                    ></input>
+                    <button onClick={() => deleteFromLinkList(id)}>del</button>
                   </div>
                 );
               })}
