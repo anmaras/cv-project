@@ -24,22 +24,23 @@ function Form() {
 
   const addToLinkListHandler = () => {
     const { id, ...linksListData } = linkListData[0];
+    if (linkList.length > 1) {
+      setIsLinkListMaxed(true);
+    }
+
     const newLinkItem = {
       id: uuid(),
       ...linksListData,
     };
     setLinkList([...linkList, newLinkItem]);
-
-    if (linkList.length > 1) {
-      setIsLinkListMaxed(true);
-    } else {
-      setIsLinkListMaxed(false);
-    }
   };
 
   const deleteFromLinkList = (id) => {
     const newLinkList = linkList.filter((item) => item.id !== id);
     setLinkList(newLinkList);
+    if (newLinkList.length < 3) {
+      setIsLinkListMaxed(false);
+    }
   };
 
   console.log(linkList.length);
