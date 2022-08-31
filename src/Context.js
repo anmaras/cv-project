@@ -5,13 +5,12 @@ import uuid from 'react-uuid';
 const AppContext = React.createContext();
 
 const personalData = {
-  name: '',
+  firstName: '',
+  lastName: '',
   title: '',
   email: '',
   phone: '',
   city: '',
-  linkedin: '',
-  portfolio: '',
   profile: '',
 };
 
