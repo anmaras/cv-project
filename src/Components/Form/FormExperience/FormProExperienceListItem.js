@@ -4,9 +4,17 @@ import CheckBox from '../../Ui/CheckBox';
 import { getSelectedObj } from '../../../Utilities';
 import { useGlobalContext } from '../../../Context';
 
-function FormProExperienceListItem({ id, type, name }) {
-  const { removeItemFromLists, onChangeHandler, workXpFormList } =
-    useGlobalContext();
+function FormProExperienceListItem({ id, type, name, jobSpecifics }) {
+  const {
+    removeItemFromLists,
+    onChangeHandler,
+    workXpFormList,
+    isJobInfoActive,
+    setIsJobInfoActive,
+    addToMoreAboutJobInfoList,
+    jobInfoOnChangeHandler,
+    removeJobInfoList,
+  } = useGlobalContext();
 
   return (
     <form className={style.form}>
@@ -40,6 +48,51 @@ function FormProExperienceListItem({ id, type, name }) {
         list={workXpFormList}
         onChange={onChangeHandler}
       />
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setIsJobInfoActive(!isJobInfoActive);
+        }}
+      >
+        open MORE about job
+      </button>
+      {isJobInfoActive && (
+        <section>
+          <ul>
+            {jobSpecifics.map((item) => {
+              const mainListId = id;
+              return (
+                <li key={item.id}>
+                  <textarea
+                    placeholder="textArea"
+                    name="jobSpecifics"
+                    onChange={(e) => {
+                      jobInfoOnChangeHandler(e, item.id, mainListId);
+                    }}
+                    value={item.info}
+                  />
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      removeJobInfoList(item.id);
+                    }}
+                  >
+                    Delete TextArea
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addToMoreAboutJobInfoList(id);
+            }}
+          >
+            add
+          </button>
+        </section>
+      )}
       <button
         onClick={(e) => {
           removeItemFromLists(e, id);
