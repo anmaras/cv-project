@@ -13,12 +13,15 @@ import { useGlobalContext } from '../../../Context';
 
 function CvHeader() {
   const { personalInfo, linkList, isLinksOpen } = useGlobalContext();
-  const { name, title, email, phone, city, profile } = personalInfo;
+  const { firstName, lastName, title, email, phone, city, profile } =
+    personalInfo;
   return (
     <section className={style['cv-header']}>
       <section className={style['info-primary__section']}>
         <div className={style['name-job__wrapper']}>
-          <h3 className={style.name}>{name ? name : 'your name'}</h3>
+          <h3 className={style.name}>
+            {firstName || lastName ? `${firstName} ${lastName}` : 'your name'}
+          </h3>
           <p className={style.job}>{title ? title : 'your job title'}</p>
         </div>
         <ul className={style['link-list']}>
