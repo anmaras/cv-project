@@ -11,6 +11,7 @@ function CvProExperienceItem({
   workingFrom,
   workingTo,
   id,
+  jobSpecifics,
 }) {
   const { workXpFormList } = useGlobalContext();
   const checkbox = getSelectedObj(workXpFormList, id)['checkbox'];
@@ -36,6 +37,9 @@ function CvProExperienceItem({
       </p>
       <p className={style['job-position']}>{jobPosition}</p>
       <p className={style['job-description']}>{workInfo}</p>
+      {jobSpecifics.map((item) => {
+        return <p key={item.id}>{item.info}</p>;
+      })}
     </div>
   );
 }
