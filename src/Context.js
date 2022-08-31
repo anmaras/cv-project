@@ -28,6 +28,12 @@ const eduFormListInitialValue = [
     checkbox: false,
   },
 ];
+
+const extraJobInfo = {
+  id: uuid(),
+  info: '',
+};
+
 const expFormListInitialValue = [
   {
     checkbox: false,
@@ -40,6 +46,7 @@ const expFormListInitialValue = [
       'workingFrom',
       'workingTo',
     ],
+    jobSpecifics: [extraJobInfo],
     position: '',
     company: '',
     companyCity: '',
@@ -65,6 +72,7 @@ function Context({ children }) {
   const [isLinksOpen, setIsLinksOpen] = useState(false);
   const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
   const [linkList, setLinkList] = useState([linkListData]);
+  const [isJobInfoActive, setIsJobInfoActive] = useState(true);
 
   /*---- HEADER LINKS FUNCTIONALITY START ----*/
 
@@ -123,6 +131,61 @@ function Context({ children }) {
     setWorkXpFormList([...workXpFormList, newWorkXpItem]);
   };
 
+  const addToMoreAboutJobInfoList = (id) => {
+    const newJobInfoItem = {
+      id: uuid(),
+      info: '',
+    };
+
+    setWorkXpFormList(
+      workXpFormList.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            jobSpecifics: [...item.jobSpecifics, newJobInfoItem],
+          };
+        } else {
+          return { ...item };
+        }
+      })
+    );
+  };
+
+  const jobInfoOnChangeHandler = (e, id, mainId) => {
+    const { value } = e.target;
+    /* set the state to change the text area onChange
+    the id is the textarea id  need mainId from the workXpFormList to work */
+    setWorkXpFormList(
+      workXpFormList.map((item) => {
+        if (item.id === mainId) {
+          return {
+            ...item,
+            jobSpecifics: item.jobSpecifics.map((item) => {
+              if (item.id === id) {
+                return { ...item, info: value };
+              }
+              return { ...item };
+            }),
+          };
+        }
+        return { ...item };
+      })
+    );
+  };
+
+  const removeJobInfoList = (infoItemId) => {
+    setWorkXpFormList(
+      workXpFormList.map((item) => {
+        return {
+          ...item,
+          jobSpecifics: item.jobSpecifics.filter(
+            (item) => item.id !== infoItemId
+          ),
+        };
+      })
+    );
+  };
+
   const onChangeHandler = (e, id) => {
     const { value, name } = e.target;
 
@@ -136,6 +199,7 @@ function Context({ children }) {
     setEducationFormList(removeFromLists(educationFormList, id));
     setWorkXpFormList(removeFromLists(workXpFormList, id));
   };
+  // console.log(workXpFormList);
 
   const resetForms = () => {
     setPersonalInfo(personalData);
@@ -162,6 +226,11 @@ function Context({ children }) {
         addToLinkListHandler,
         deleteFromLinkList,
         setIsLinksOpen,
+        isJobInfoActive,
+        setIsJobInfoActive,
+        addToMoreAboutJobInfoList,
+        jobInfoOnChangeHandler,
+        removeJobInfoList,
       }}
     >
       {children}
