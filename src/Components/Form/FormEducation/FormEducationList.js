@@ -1,5 +1,6 @@
 import React from 'react';
 import FormEducationListItem from './FormEducationListItem';
+import { BsPlusLg } from 'react-icons/bs';
 import { useGlobalContext } from '../../../Context';
 import style from '../Form.module.css';
 
@@ -18,9 +19,10 @@ function FormEducationList() {
         })}
       </ul>
       <button
-        className={[style['add-education-btn']].join(' ')}
+        className={[style['add-education-btn'], 'btn-style-1'].join(' ')}
         onClick={addToEducationList}
       >
+        <BsPlusLg />
         add education
       </button>
     </section>
