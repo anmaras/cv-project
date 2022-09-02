@@ -3,7 +3,6 @@ import React from 'react';
 function CheckBox({ id, list, getObj, onChange }) {
   return (
     <div>
-      <label htmlFor={id}>currently attending </label>
       <input
         type="checkbox"
         id={id}
@@ -11,6 +10,7 @@ function CheckBox({ id, list, getObj, onChange }) {
         checked={getObj(list, id)['checkbox']}
         onChange={(e) => onChange(e, id)}
       />
+      <label htmlFor={id}>currently attending </label>
     </div>
   );
 }
