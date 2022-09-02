@@ -1,5 +1,6 @@
 import React from 'react';
 import FormProExperienceListItem from './FormProExperienceListItem';
+import { BsPlusLg } from 'react-icons/bs';
 import { useGlobalContext } from '../../../Context';
 import style from '../Form.module.css';
 
@@ -19,9 +20,10 @@ function FormProExperienceList() {
         })}
       </ul>
       <button
-        className={[style['add-exp-btn']].join(' ')}
+        className={[style['add-exp-btn'], 'btn-style-1'].join(' ')}
         onClick={addToWorkXpList}
       >
+        <BsPlusLg />
         add work exp
       </button>
     </section>
