@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+:root {
+  --blue-color: #95c3fe;
+  --darker-blue-color: #62a6ff;
+  --light-grey: #ccc;
+}
+
 h1,
 h2,
 h3,
@@ -66,18 +72,107 @@ body {
   align-content: center;
 }
 
-header {
-}
-
 main {
   display: grid;
   grid-template-rows: 1fr 1fr;
+}
+
+label {
+  display: inline-block;
+  font-size: 0.813rem;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin-bottom: 0.2rem;
+}
+
+input,
+textarea {
+  border: 0;
+  outline: thin solid #ccc;
+  font-size: 0.87rem;
+}
+
+input:focus,
+textarea:focus {
+  outline-width: thin;
+  outline-color: var(--blue-color);
+  caret-color: var(--blue-color);
+}
+
+input[type='checkbox'] {
+  outline: 0;
+}
+
+/* when focus on input select its label */
+form div:has(input:focus) > label,
+li div:has(input:focus) > label,
+li div:has(textarea:focus) > label,
+div:has(textarea:focus) > label {
+  color: var(--darker-blue-color);
+}
+
+button {
+  width: fit-content;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding-block: 0.5rem;
+  padding-inline: 0.25rem;
+}
+
+select {
+  border: 0;
+  padding-block: calc(0.5rem + 2px);
+  outline: thin solid #ccc;
+  font-size: 0.87rem;
+}
+
+.btn-style-1 {
+  border: thin solid white;
+  background-color: transparent;
+  color: var(--darker-blue-color);
+  font-size: 0.87rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-style-1:focus {
+  outline: 0;
+  border-bottom: thin dotted var(--blue-color);
+}
+
+::placeholder {
+  font-size: 0.875rem;
+  color: rgb(146, 146, 146);
+  letter-spacing: 1px;
+}
+
+fieldset {
+  border: thin solid var(--light-grey);
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+}
+
+legend {
+  padding-inline: 0.2rem;
+  font-size: 0.87rem;
 }
 
 @media (min-width: 1440px) {
   main {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+  }
+  fieldset {
+    border: thin solid var(--light-grey);
+    padding: 1rem;
+    margin-inline: 2rem;
   }
 }
 
