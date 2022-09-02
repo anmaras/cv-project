@@ -45,12 +45,12 @@ function FormEducationListItem({ id, type, name }) {
         />
       </form>
       <button
-        className={style['delete-education-btn']}
+        className={[style['delete-education-btn'], 'btn-style-1'].join(' ')}
         onClick={() => {
           removeItemFromLists(id);
         }}
       >
-        <RiDeleteBin6Line />
+        remove
       </button>
     </div>
   );
