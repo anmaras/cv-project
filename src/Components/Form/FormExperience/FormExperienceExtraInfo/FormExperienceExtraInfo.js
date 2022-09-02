@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../../../Context';
-import { RiDeleteBin6Line } from 'react-icons/ri';
+import { BsPlusLg } from 'react-icons/bs';
+
 import style from './FormExperienceExtraInfo.module.css';
 
 function FormExperienceExtraInfo({ id, jobSpecifics }) {
@@ -15,54 +16,71 @@ function FormExperienceExtraInfo({ id, jobSpecifics }) {
   return (
     <div className={style['extraInfo-container']}>
       <button
+        className={[style['add-extraInfo-btn'], 'btn-style-1'].join(' ')}
         onClick={(e) => {
           e.preventDefault();
           setIsJobInfoActive(!isJobInfoActive);
         }}
       >
-        open MORE about job
+        <BsPlusLg />
+        add extra info
       </button>
-      <div>
-        {isJobInfoActive && (
-          <>
-            <ul className={style['expJobExtraInfo-list']}>
-              {jobSpecifics.map((item) => {
-                return (
-                  <li
-                    key={item.id}
-                    className={style['expJobExtraInfo-listItem']}
-                  >
-                    <textarea
-                      placeholder="textArea"
-                      name="jobSpecifics"
-                      onChange={(e) => {
-                        jobInfoOnChangeHandler(e, item.id, id);
-                      }}
-                      value={item.info}
-                    />
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        removeJobInfoList(item.id);
-                      }}
-                    >
-                      <RiDeleteBin6Line />
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                addToMoreAboutJobInfoList(id);
-              }}
-            >
-              add extra info
-            </button>
-          </>
-        )}
-      </div>
+      {isJobInfoActive && (
+        <fieldset>
+          <legend>Extra Info</legend>
+
+          <div>
+            {isJobInfoActive && (
+              <>
+                <ul className={style['expJobExtraInfo-list']}>
+                  {jobSpecifics.map((item) => {
+                    return (
+                      <li
+                        key={item.id}
+                        className={style['expJobExtraInfo-listItem']}
+                      >
+                        <div>
+                          <label htmlFor="textArea">Add</label>
+                          <textarea
+                            id="textArea"
+                            placeholder="e.g. Say something about your role in that job..."
+                            name="jobSpecifics"
+                            onChange={(e) => {
+                              jobInfoOnChangeHandler(e, item.id, id);
+                            }}
+                            value={item.info}
+                          />
+                        </div>
+                        <button
+                          className={[
+                            style['remove-info-btn'],
+                            'btn-style-1',
+                          ].join(' ')}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removeJobInfoList(item.id);
+                          }}
+                        >
+                          remove
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <button
+                  className={[style['add-more-btn'], 'btn-style-1'].join(' ')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToMoreAboutJobInfoList(id);
+                  }}
+                >
+                  <BsPlusLg /> add more
+                </button>
+              </>
+            )}
+          </div>
+        </fieldset>
+      )}
     </div>
   );
 }
