@@ -1,65 +1,141 @@
-/* Form style */
-label {
-  display: inline-block;
-}
-
-input,
-textarea,
-select {
-  width: 100%;
-}
-
-select {
-  padding: 3px;
-}
-
+/* main forms container */
 .forms-container {
-  height: 80vh;
+  height: 85vh;
   overflow: auto;
   display: grid;
   align-content: space-between;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 3rem;
+  padding-inline: 0.5rem;
 }
 
-.form-wrapper {
-  background-color: antiquewhite;
+.form-title {
+  width: fit-content;
+  letter-spacing: 2px;
+  margin-block: 0.5rem;
+  font-weight: 300;
+}
+
+.form-title::after {
+  content: '//';
+  opacity: 0;
+}
+
+.listItem-form-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .form {
   display: grid;
+  gap: 1rem;
 }
 
-.socialLinks-wrapper {
-  display: grid;
-}
-
-.socialLinks-wrapper li {
+.form div:has(input[type='checkbox']) {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  grid-template-columns: minmax(120px, 1fr) 3fr auto;
-  align-items: center;
-  column-gap: 0.5rem;
+  justify-content: right;
+  gap: 0.5rem;
+}
+/* select the label when the checkbox is checked or when is not change the color */
+.form div:has(input[type='checkbox']:checked) > label {
+  color: var(--darker-blue-color);
+}
+.form div:has(input[type='checkbox']:not(:checked)) > label {
+  color: inherit;
 }
 
-.socialLinks-wrapper button {
+/* delete education form button */
+.delete-education-btn,
+.delete-experience-btn {
+  width: fit-content;
   align-self: flex-end;
+  margin-block: 1rem;
 }
+
+.add-education-btn,
+.add-exp-btn {
+  margin-left: 1.5rem;
+}
+
+/* scroll bar styling start */
+.forms-container::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+.forms-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.forms-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+
+  border-radius: 20px;
+  /* outline: 1px solid slategrey; */
+}
+/* scroll bar styling end */
 
 @media (min-width: 1440px) {
-  .form-wrapper {
+  .forms-container {
+    width: 80%;
+    margin: auto;
   }
 
   .form {
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: 1fr 1fr;
-    /* align-content: center; */
     column-gap: 0.5rem;
-    /* row-gap: 1.25rem; */
   }
-  /* make last item to take 2 column width */
+
+  /* create education section unique style start */
+  .education,
+  .experience {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .university,
+  .subject,
+  .company,
+  .companyCity {
+    grid-column: 1/3;
+  }
+
+  .university,
+  .position {
+    grid-row: 1/2;
+  }
+
+  .degree,
+  .position {
+    grid-column: 3/-1;
+  }
+
+  .workDescription {
+    grid-column: 1/-1;
+  }
+
+  .yearTo,
+  .workingTo {
+    grid-column: 4/5;
+    grid-row: 2/3;
+  }
+  .yearFrom,
+  .workingFrom {
+    grid-column: 3/4;
+    grid-row: 2/3;
+  }
+
+  /* select the checkbox div of education and exp form*/
+  .form.education div:has(input[type='checkbox']),
+  .form.experience div:has(input[type='checkbox']) {
+    grid-column: 3/-1;
+  }
+
+  .form.experience div:has(input[type='checkbox']) {
+    grid-row: 3/4;
+  }
+
+  /* make  the last item from personal form to take 2 column width */
   .form div:last-child {
     grid-column: 1/3;
   }

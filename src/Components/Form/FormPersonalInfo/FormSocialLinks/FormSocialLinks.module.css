@@ -1,0 +1,28 @@
+.links-section {
+  padding: 1rem;
+}
+
+.add-social-btn,
+.add-more-social-btn {
+  margin-left: 0.5rem;
+}
+
+.socialLinks-list {
+  margin-block: 2rem;
+  display: grid;
+  /* gap: 0.5rem; */
+}
+
+.socialLinks-listItem {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: minmax(120px, 1fr) 3fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.socialList-del-btn {
+  grid-column: 1/-1;
+  grid-row: 2/2;
+  justify-self: end;
+}

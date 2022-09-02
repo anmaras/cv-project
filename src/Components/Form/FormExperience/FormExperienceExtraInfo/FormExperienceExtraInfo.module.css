@@ -1,0 +1,24 @@
+.extraInfo-container {
+  display: grid;
+  /* padding-inline: 2rem; */
+  /* margin-block: 1rem; */
+}
+
+.expJobExtraInfo-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.expJobExtraInfo-listItem {
+  display: grid;
+  align-items: center;
+}
+
+.add-extraInfo-btn,
+.add-more-btn {
+  margin-block: 1rem;
+}
+
+.remove-info-btn {
+  justify-self: end;
+}
