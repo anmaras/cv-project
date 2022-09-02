@@ -19,7 +19,7 @@ function FormSocialLinks() {
   return (
     <div className={style['links-section']}>
       <button
-        className={style['add-social-btn']}
+        className={[style['add-social-btn'], 'btn-style-1'].join(' ')}
         onClick={() => setIsLinksOpen(!isLinksOpen)}
       >
         <BsPlusLg /> Add Social Links
@@ -55,17 +55,28 @@ function FormSocialLinks() {
                     />
                   </div>
                   <button
-                    className={style['socialList-del-btn']}
+                    className={[
+                      style['socialList-del-btn'],
+                      'btn-style-1',
+                    ].join(' ')}
                     onClick={() => deleteFromLinkList(id)}
                   >
-                    <RiDeleteBin6Line />
+                    remove
                   </button>
                 </li>
               );
             })}
           </ul>
           {!isLinkListMaxed && (
-            <button onClick={addToLinkListHandler}>Add more links</button>
+            <button
+              className={[style['add-more-social-btn'], 'btn-style-1'].join(
+                ' '
+              )}
+              onClick={addToLinkListHandler}
+            >
+              <BsPlusLg />
+              Add more
+            </button>
           )}
         </div>
       )}
