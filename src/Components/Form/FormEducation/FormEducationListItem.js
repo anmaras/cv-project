@@ -1,19 +1,17 @@
-import style from '../Form.module.css';
 import CheckBox from '../../Ui/CheckBox';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+
 import { getSelectedObj } from '../../../Utilities';
 import { useGlobalContext } from '../../../Context';
+import style from '../Form.module.css';
 
 function FormEducationListItem({ id, type, name }) {
   const { removeItemFromLists, onChangeHandler, educationFormList } =
     useGlobalContext();
 
-  const getObject = (array) => {
-    return array.find((item) => item.id === id);
-  };
-
   return (
-    <>
-      <form className={style.form}>
+    <div className={style['listItem-form-wrapper']}>
+      <form className={[style.form, style.education].join(' ')}>
         {name.map((formItem, index) => {
           const inputType =
             formItem === 'yearFrom' || formItem === 'yearTo' ? 'month' : type;
@@ -22,17 +20,21 @@ function FormEducationListItem({ id, type, name }) {
             getSelectedObj(educationFormList, id)['checkbox'];
           const value = getSelectedObj(educationFormList, id)[formItem];
           return (
-            <input
-              key={index}
-              type={inputType}
-              name={formItem}
-              disabled={isActive}
-              placeholder={formItem}
-              onChange={(e) => {
-                onChangeHandler(e, id);
-              }}
-              value={value}
-            />
+            <div key={index} className={style[`${formItem}`]}>
+              <label htmlFor={formItem}>{formItem}</label>
+              <input
+                id={formItem}
+                key={index}
+                type={inputType}
+                name={formItem}
+                disabled={isActive}
+                placeholder={formItem}
+                onChange={(e) => {
+                  onChangeHandler(e, id);
+                }}
+                value={value}
+              />
+            </div>
           );
         })}
         <CheckBox
@@ -41,15 +43,16 @@ function FormEducationListItem({ id, type, name }) {
           list={educationFormList}
           onChange={onChangeHandler}
         />
-        <button
-          onClick={(e) => {
-            removeItemFromLists(e, id);
-          }}
-        >
-          delete
-        </button>
       </form>
-    </>
+      <button
+        className={style['delete-education-btn']}
+        onClick={() => {
+          removeItemFromLists(id);
+        }}
+      >
+        <RiDeleteBin6Line />
+      </button>
+    </div>
   );
 }
 

@@ -7,13 +7,24 @@ function FormProExperienceList() {
   const { addToWorkXpList, workXpFormList } = useGlobalContext();
 
   return (
-    <div className={style['form-wrapper']}>
-      <h3>Experience</h3>
-      {workXpFormList.map((item) => {
-        return <FormProExperienceListItem key={item.id} {...item} />;
-      })}
-      <button onClick={addToWorkXpList}>add work exp</button>
-    </div>
+    <section className={style['form-wrapper']}>
+      <h3 className={style['form-title']}>Experience</h3>
+      <ul>
+        {workXpFormList.map((item) => {
+          return (
+            <li key={item.id} className={style.listItem}>
+              <FormProExperienceListItem {...item} />
+            </li>
+          );
+        })}
+      </ul>
+      <button
+        className={[style['add-exp-btn']].join(' ')}
+        onClick={addToWorkXpList}
+      >
+        add work exp
+      </button>
+    </section>
   );
 }
 
