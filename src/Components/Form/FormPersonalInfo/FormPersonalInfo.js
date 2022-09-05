@@ -82,6 +82,7 @@ function FormPersonalInfo() {
         <div>
           <label htmlFor="description">Description</label>
           <textarea
+            maxLength="200"
             id="description"
             name="profile"
             placeholder="description"
