@@ -24,7 +24,7 @@ function FormProExperienceList() {
         onClick={addToWorkXpList}
       >
         <BsPlusLg />
-        add work exp
+        add work experience
       </button>
     </section>
   );
