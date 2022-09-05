@@ -10,6 +10,7 @@
   --blue-color: #95c3fe;
   --darker-blue-color: #62a6ff;
   --light-grey: #ccc;
+  --white: #fff;
 }
 
 h1,
@@ -130,7 +131,8 @@ select {
   font-size: 0.87rem;
 }
 
-.btn-style-1 {
+.btn-style-1,
+.btn-style-2 {
   border: thin solid white;
   background-color: transparent;
   color: var(--darker-blue-color);
@@ -142,9 +144,23 @@ select {
   gap: 0.5rem;
 }
 
+.btn-style-2 {
+  background-color: var(--darker-blue-color);
+  color: var(--white);
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  display: block;
+  justify-self: center;
+}
+
 .btn-style-1:focus {
   outline: 0;
   border-bottom: thin dotted var(--blue-color);
+}
+
+.btn-style-2:focus {
+  outline-color: var(--light-grey);
+  border: 0;
 }
 
 ::placeholder {
