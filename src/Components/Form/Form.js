@@ -13,7 +13,12 @@ function Form() {
       <FormPersonalInfo />
       <FormEducationList />
       <FormProExperienceList />
-      <button onClick={resetForms}>resetForms</button>
+      <button
+        className={[style['reset-form-btn'], 'btn-style-2'].join(' ')}
+        onClick={resetForms}
+      >
+        reset forms
+      </button>
     </article>
   );
 }
