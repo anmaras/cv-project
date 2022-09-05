@@ -47,7 +47,7 @@ function FormProExperienceListItem({ id, type, name, jobSpecifics }) {
       </form>
       <FormExperienceExtraInfo id={id} jobSpecifics={jobSpecifics} />
       <button
-        className={style['delete-experience-btn']}
+        className={[style['delete-experience-btn'], 'btn-style-1'].join(' ')}
         onClick={() => {
           removeItemFromLists(id);
         }}
