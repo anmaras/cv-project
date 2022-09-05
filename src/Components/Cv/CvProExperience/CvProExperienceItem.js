@@ -31,15 +31,20 @@ function CvProExperienceItem({
       <p className={style.location}>{companyLocation}</p>
       <p className={style.period}>
         <span>
-          {from}
-          {checkbox ? 'Present' : to}
+          {from} - {checkbox ? 'Present' : to}
         </span>
       </p>
       <p className={style['job-position']}>{jobPosition}</p>
       <p className={style['job-description']}>{workInfo}</p>
-      {jobSpecifics.map((item) => {
-        return <p key={item.id}>{item.info}</p>;
-      })}
+      <ul className={style['extra-info-list']}>
+        {jobSpecifics.map((item) => {
+          return (
+            <li className={style['extra-info-list-item']} key={item.id}>
+              {item.info}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
