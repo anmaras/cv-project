@@ -1,7 +1,90 @@
 .cv-header {
   display: grid;
   grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+  padding-block: 1rem;
   border-bottom: 1px solid black;
+}
+
+.info-primary__section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 1rem;
+}
+
+/* .info-primary__section,
+.info-secondary__section {
+  padding-inline: var(--padding-inline);
+  padding-block: var(--padding-block);
+} */
+
+.name {
+  width: fit-content;
+  margin: auto;
+  letter-spacing: var(--h-letter-spacing);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--light-grey);
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+}
+
+.job {
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+}
+
+.link-list {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  gap: 1rem;
+  margin-block: 0.5rem;
+}
+
+.link-list li p,
+.link-list li a {
+  text-align: left;
+  font-weight: 300;
+  word-wrap: break-word;
+  word-break: break-all;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.social-list {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 1rem;
+  margin-block: 0.5rem;
+}
+
+.social-list-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 300;
+}
+
+.info-secondary__section {
+  border-left: 1px solid var(--light-grey);
+  padding-left: 1rem;
+}
+
+.profile-title {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--s-letter-spacing);
+  margin-bottom: 1rem;
+}
+
+.profile {
+  font-size: var(--fs-normal);
+  word-break: break-all;
 }
 
 @media (min-width: 1440px) {
@@ -9,70 +92,8 @@
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
   }
-}
 
-.info-primary__section {
-  width: 100%;
-  text-align: center;
-}
-
-.name {
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-bottom: 1px solid gray;
-  font-weight: 500;
-}
-
-.job {
-  padding-top: 0.5rem;
-  text-transform: capitalize;
-}
-
-.link-list {
-  width: 90%;
-  margin: auto;
-
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-rows: 1fr;
-  justify-items: start;
-  align-items: center;
-}
-
-.link-list li p,
-.link-list li a {
-  font-size: 0.81rem;
-  /* word-break: break-all; */
-  align-items: center;
-}
-
-.link-list li p > span,
-.link-list li a > span {
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.info-secondary__section {
-  border-left: 1px solid black;
-}
-
-.title {
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: inherit;
-}
-
-.description {
-  font-size: 0.8rem;
-}
-
-.name,
-.title {
-  padding-bottom: 1rem;
-}
-
-.description__wrapper,
-.name-job__wrapper {
-  /* padding: 1rem; */
+  .link-list {
+    justify-content: space-between;
+  }
 }

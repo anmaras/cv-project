@@ -7,6 +7,24 @@
 }
 
 :root {
+  /* cv text */
+
+  /* padding */
+
+  --padding-block: 0.5rem;
+  --padding-inline: 1rem;
+
+  /* text */
+  --h-letter-spacing: 1px;
+  --s-letter-spacing: 3px;
+
+  --fs-normal: 0.875rem;
+  --fs-header: 24px;
+
+  /* cv dimensions */
+  --cv-width: 793.7px;
+  --cv-height: 1122.5px;
+  /* colors */
   --blue-color: #95c3fe;
   --darker-blue-color: #62a6ff;
   --light-grey: #ccc;
@@ -31,7 +49,7 @@ h3 {
   font-size: 1.5rem;
 }
 h4 {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 a {
@@ -70,12 +88,14 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  align-content: center;
 }
 
 main {
+  /* height: 800px; */
   display: grid;
   grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  overflow: auto;
 }
 
 label {
@@ -171,8 +191,9 @@ select {
 
 fieldset {
   border: thin solid var(--light-grey);
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
+  padding: 1rem;
+  display: grid;
+  margin-top: 2rem;
 }
 
 legend {
@@ -181,16 +202,26 @@ legend {
 }
 
 @media (min-width: 1440px) {
+  #root {
+    place-items: center;
+  }
+
   main {
-    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    grid-auto-flow: row;
     grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
   }
   fieldset {
-    border: thin solid var(--light-grey);
-    padding: 1rem;
-    margin-inline: 2rem;
+    /* border: thin solid var(--light-grey); */
+    /* margin-inline: 2rem; */
   }
 }
 
-footer {
+@media (min-width: 1920px) {
+  main {
+    grid-template-columns: minmax(auto, var(--cv-width)) var(--cv-width);
+    grid-template-rows: 1fr;
+  }
 }

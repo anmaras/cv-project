@@ -1,20 +1,26 @@
 .pro-section {
   border-bottom: 1px solid black;
-  border-left: 1px solid black;
+  padding-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 3rem;
 }
 
-.pro-section h4 {
+.pro-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pro-title {
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  padding-bottom: 1rem;
-  font-size: inherit;
+  letter-spacing: var(--s-letter-spacing);
+  margin-bottom: 1rem;
 }
 
 .company-name {
   text-transform: uppercase;
-  font-size: 0.83rem;
-  font-weight: 400;
+  font-weight: 500;
   display: inline-block;
 }
 
@@ -23,16 +29,13 @@
   margin-inline: 4px;
   text-transform: capitalize;
   font-style: italic;
-  font-size: 0.8rem;
 }
 
 .period {
   display: inline;
-  font-size: 0.813rem;
 }
 
 .job-position {
-  font-size: 0.875rem;
   font-style: italic;
 }
 
@@ -44,7 +47,16 @@
 
 .job-description {
   margin-top: 1rem;
-  font-size: 0.83rem;
+}
+
+.extra-info-list {
+  padding-inline: 2rem;
+  margin-top: 1.2rem;
+}
+
+.extra-info-list-item {
+  list-style: disc;
+  font-weight: 300;
 }
 
 @media (min-width: 1440px) {
