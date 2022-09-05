@@ -8,12 +8,16 @@ function CvProExperienceList() {
 
   return (
     <section className={style['pro-section']}>
-      <h4>Professional Experience</h4>
-      <div>
+      <h4 className={style['pro-title']}>Professional Experience</h4>
+      <ul className={style['pro-list']}>
         {workXpFormList.map((item) => {
-          return <CvProExperienceItem key={item.id} {...item} />;
+          return (
+            <li className={style['pro-list-item']} key={item.id}>
+              <CvProExperienceItem {...item} />
+            </li>
+          );
         })}
-      </div>
+      </ul>
     </section>
   );
 }
