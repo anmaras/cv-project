@@ -1,24 +1,15 @@
 import React from 'react';
-import FormEducationList from './FormEducation/FormEducationList';
-import FormProExperienceList from './FormExperience/FormProExperienceList';
-import FormPersonalInfo from './FormPersonalInfo/FormPersonalInfo';
+import { Outlet } from 'react-router-dom';
 import style from './Form.module.css';
-import { useGlobalContext } from '../../Context';
+import LinkNavBar from '../Ui/LinkNavBar';
 
 function Form() {
-  const { resetForms } = useGlobalContext();
-
   return (
-    <article className={style['forms-container']}>
-      <FormPersonalInfo />
-      <FormEducationList />
-      <FormProExperienceList />
-      <button
-        className={[style['reset-form-btn'], 'btn-style-2'].join(' ')}
-        onClick={resetForms}
-      >
-        reset forms
-      </button>
+    <article>
+      <LinkNavBar />
+      <div className={style['forms-container']}>
+        <Outlet className={style['forms-container']} />
+      </div>
     </article>
   );
 }
