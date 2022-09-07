@@ -193,18 +193,16 @@ function Context({ children }) {
     setWorkXpFormList(editListState(workXpFormList, id, name, value));
   };
 
-  const removeItemFromLists = (e, id) => {
-    e.preventDefault();
+  const removeItemFromLists = (id) => {
     setEducationFormList(removeFromLists(educationFormList, id));
     setWorkXpFormList(removeFromLists(workXpFormList, id));
   };
   // console.log(workXpFormList);
 
-  const resetForms = () => {
-    setPersonalInfo(personalData);
+  const resetPersonalForm = () => setPersonalInfo(personalData);
+  const resetEducationForm = () =>
     setEducationFormList(eduFormListInitialValue);
-    setWorkXpFormList(expFormListInitialValue);
-  };
+  const resetExperienceForm = () => setWorkXpFormList(expFormListInitialValue);
 
   return (
     <AppContext.Provider
@@ -216,7 +214,6 @@ function Context({ children }) {
         removeItemFromLists,
         eduFormListInitialValue,
         onChangeHandler,
-        resetForms,
         addToWorkXpList,
         workXpFormList,
         isLinksOpen,
@@ -230,6 +227,9 @@ function Context({ children }) {
         addToMoreAboutJobInfoList,
         jobInfoOnChangeHandler,
         removeJobInfoList,
+        resetPersonalForm,
+        resetEducationForm,
+        resetExperienceForm,
       }}
     >
       {children}
