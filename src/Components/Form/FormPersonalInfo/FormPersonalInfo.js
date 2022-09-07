@@ -1,17 +1,21 @@
 import React from 'react';
 import FormSocialLinks from './FormSocialLinks/FormSocialLinks';
+
 import { useGlobalContext } from '../../../Context';
 
 import style from '../Form.module.css';
+import ResetBtn from '../../Ui/ResetBtn';
 
 function FormPersonalInfo() {
-  const { personalInfoOnChangeHandler, personalInfo } = useGlobalContext();
-  const { name, title, email, phone, city, profile } = personalInfo;
+  const { personalInfoOnChangeHandler, personalInfo, resetPersonalForm } =
+    useGlobalContext();
+  const { firstName, lastName, title, email, phone, city, profile } =
+    personalInfo;
 
   return (
     <section className={style['form-wrapper']}>
       <h3 className={style['form-title']}>Personal info</h3>
-      <form className={style.form}>
+      <form className={style['listItem-form']}>
         <div>
           <label htmlFor="firstName">First Name</label>
           <input
@@ -20,7 +24,7 @@ function FormPersonalInfo() {
             name="firstName"
             placeholder="e.g. Anthony "
             onChange={personalInfoOnChangeHandler}
-            value={name}
+            value={firstName}
           />
         </div>
         <div>
@@ -31,7 +35,7 @@ function FormPersonalInfo() {
             name="lastName"
             placeholder="e.g. Maras"
             onChange={personalInfoOnChangeHandler}
-            value={name}
+            value={lastName}
           />
         </div>
         <div>
@@ -92,6 +96,11 @@ function FormPersonalInfo() {
         </div>
       </form>
       <FormSocialLinks />
+      <ResetBtn
+        className={[style['reset-form-btn'], 'btn-style-2'].join(' ')}
+        onClick={resetPersonalForm}
+        content="reset form"
+      />
     </section>
   );
 }
