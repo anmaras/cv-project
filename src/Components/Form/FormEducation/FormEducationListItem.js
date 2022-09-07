@@ -1,6 +1,4 @@
 import CheckBox from '../../Ui/CheckBox';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-
 import { getSelectedObj } from '../../../Utilities';
 import { useGlobalContext } from '../../../Context';
 import style from '../Form.module.css';
@@ -11,7 +9,7 @@ function FormEducationListItem({ id, type, name }) {
 
   return (
     <div className={style['listItem-form-wrapper']}>
-      <form className={[style.form, style.education].join(' ')}>
+      <form className={[style['listItem-form'], style.education].join(' ')}>
         {name.map((formItem, index) => {
           const inputType =
             formItem === 'yearFrom' || formItem === 'yearTo' ? 'month' : type;

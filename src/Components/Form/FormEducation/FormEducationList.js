@@ -3,11 +3,13 @@ import FormEducationListItem from './FormEducationListItem';
 import { BsPlusLg } from 'react-icons/bs';
 import { useGlobalContext } from '../../../Context';
 import style from '../Form.module.css';
+import ResetBtn from '../../Ui/ResetBtn';
 
 function FormEducationList() {
-  const { educationFormList, addToEducationList } = useGlobalContext();
+  const { educationFormList, addToEducationList, resetEducationForm } =
+    useGlobalContext();
   return (
-    <section className={style['form-wrapper']}>
+    <section>
       <h3 className={style['form-title']}>Education</h3>
       <ul>
         {educationFormList.map((formItem) => {
@@ -25,6 +27,11 @@ function FormEducationList() {
         <BsPlusLg />
         add education
       </button>
+      <ResetBtn
+        className={[style['reset-form-btn'], 'btn-style-2'].join(' ')}
+        onClick={resetEducationForm}
+        content="reset form"
+      />
     </section>
   );
 }
