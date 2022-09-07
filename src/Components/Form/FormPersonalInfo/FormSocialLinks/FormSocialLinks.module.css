@@ -1,17 +1,12 @@
 .links-section {
-  padding: 1rem;
+  margin-block: 1rem;
 }
 
 .add-social-btn,
 .add-more-social-btn {
-  width: fit-content;
+  /* width: fit-content; */
   /* margin-left: 0.5rem; */
   /* margin-block: 1rem; */
-}
-
-.socialLinks-list {
-  /* display: grid; */
-  /* gap: 0.5rem; */
 }
 
 .socialLinks-listItem {

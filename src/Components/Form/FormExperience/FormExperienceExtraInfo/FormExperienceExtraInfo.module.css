@@ -1,7 +1,5 @@
 .extraInfo-container {
-  display: grid;
-  /* padding-inline: 2rem; */
-  /* margin-block: 1rem; */
+  margin-block: 1rem;
 }
 
 .expJobExtraInfo-list {
@@ -11,12 +9,7 @@
 
 .expJobExtraInfo-listItem {
   display: grid;
-  align-items: center;
-}
-
-.add-extraInfo-btn,
-.add-more-btn {
-  /* margin-block: 1rem; */
+  /* align-items: center; */
 }
 
 .remove-info-btn {
