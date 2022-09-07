@@ -11,7 +11,7 @@ function FormProExperienceListItem({ id, type, name, jobSpecifics }) {
 
   return (
     <div className={style['listItem-form-wrapper']}>
-      <form className={[style.form, style.experience].join(' ')}>
+      <form className={[style['listItem-form'], style.experience].join(' ')}>
         {name.map((formItem, index) => {
           const inputType =
             formItem === 'workingFrom' || formItem === 'workingTo'

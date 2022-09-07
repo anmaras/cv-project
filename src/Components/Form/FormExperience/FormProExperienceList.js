@@ -3,9 +3,12 @@ import FormProExperienceListItem from './FormProExperienceListItem';
 import { BsPlusLg } from 'react-icons/bs';
 import { useGlobalContext } from '../../../Context';
 import style from '../Form.module.css';
+import { Link } from 'react-router-dom';
+import ResetBtn from '../../Ui/ResetBtn';
 
 function FormProExperienceList() {
-  const { addToWorkXpList, workXpFormList } = useGlobalContext();
+  const { addToWorkXpList, workXpFormList, resetExperienceForm } =
+    useGlobalContext();
 
   return (
     <section className={style['form-wrapper']}>
@@ -26,6 +29,11 @@ function FormProExperienceList() {
         <BsPlusLg />
         add work experience
       </button>
+      <ResetBtn
+        className={[style['reset-form-btn'], 'btn-style-2'].join(' ')}
+        onClick={resetExperienceForm}
+        content="reset form"
+      />
     </section>
   );
 }
