@@ -78,11 +78,6 @@
   align-self: flex-end;
 }
 
-.add-education-btn,
-.add-exp-btn {
-  /* margin-left: 1.5rem; */
-}
-
 .reset-form-btn {
   margin: auto;
   margin-top: 1rem;
