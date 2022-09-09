@@ -53,6 +53,7 @@ const expFormListInitialValue = [
     workingFrom: '',
     workingTo: '',
     id: uuid(),
+    isSelected: false,
   },
 ];
 
@@ -85,7 +86,27 @@ function Context({ children }) {
   const [isLinksOpen, setIsLinksOpen] = useState(false);
   const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
   const [linkList, setLinkList] = useState(getLocalStorage().social);
-  const [isJobInfoActive, setIsJobInfoActive] = useState(true);
+  const [isJobInfoActive, setIsJobInfoActive] = useState(false);
+
+  const getExtraInfoId = (id) => {
+    setWorkXpFormList(
+      workXpFormList.map((item) => {
+        if (item.id === id && !item.isSelected) {
+          return {
+            ...item,
+            isSelected: true,
+          };
+        } else if (item.id === id && item.isSelected) {
+          return {
+            ...item,
+            isSelected: false,
+          };
+        } else {
+          return { ...item };
+        }
+      })
+    );
+  };
 
   /*---- HEADER LINKS FUNCTIONALITY START ----*/
 
@@ -213,10 +234,16 @@ function Context({ children }) {
   };
   // console.log(workXpFormList);
 
-  const resetPersonalForm = () => setPersonalInfo(personalData);
+  const resetPersonalForm = () => {
+    setPersonalInfo(personalData);
+    setLinkList([]);
+  };
   const resetEducationForm = () =>
     setEducationFormList(eduFormListInitialValue);
-  const resetExperienceForm = () => setWorkXpFormList(expFormListInitialValue);
+
+  const resetExperienceForm = () => {
+    setWorkXpFormList(expFormListInitialValue);
+  };
 
   useEffect(() => {
     localStorage.setItem('personal', JSON.stringify(personalInfo));
@@ -251,6 +278,7 @@ function Context({ children }) {
         resetPersonalForm,
         resetEducationForm,
         resetExperienceForm,
+        getExtraInfoId,
       }}
     >
       {children}
