@@ -5,7 +5,7 @@ import LinkNavBar from '../Ui/LinkNavBar';
 
 function Form() {
   return (
-    <article>
+    <article className={style['forms-section']}>
       <LinkNavBar />
       <div className={style['forms-container']}>
         <Outlet className={style['forms-container']} />
