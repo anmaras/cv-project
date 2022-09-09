@@ -98,6 +98,12 @@ main {
   /* overflow: auto; */
 }
 
+header h1 {
+  font-weight: 300;
+  letter-spacing: 5px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
 label {
   display: inline-block;
   font-size: 0.813rem;
@@ -195,6 +201,25 @@ fieldset {
 
 legend {
   padding-inline: 0.2rem;
+}
+
+footer {
+  text-align: center;
+  padding-block: 0.5rem;
+}
+
+footer h2,
+footer p,
+footer a {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-inline: 0.1rem;
+}
+
+footer a {
+  vertical-align: middle;
 }
 
 @media (min-width: 1440px) {
