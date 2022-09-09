@@ -8,6 +8,30 @@
   overflow: auto;
 }
 
+.form-page-links-container {
+  /* margin-top: 1rem; */
+  margin: auto;
+  padding-inline: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  text-transform: capitalize;
+  /* border-bottom: 1px solid var(--light-grey); */
+  width: 80%;
+}
+
+.form-page-link,
+.active-form-page-link {
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+}
+
+.active-form-page-link {
+  background-color: var(--darker-blue-color);
+  color: var(--white);
+}
+
 .form-title {
   width: fit-content;
   letter-spacing: var(--h-letter-spacing);
