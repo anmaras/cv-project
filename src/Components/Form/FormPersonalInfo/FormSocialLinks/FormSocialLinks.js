@@ -1,8 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../../../Context';
 import { BsPlusLg } from 'react-icons/bs';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-
+import { FaMinus } from 'react-icons/fa';
 import style from './FormSocialLinks.module.css';
 
 function FormSocialLinks() {
@@ -22,7 +21,7 @@ function FormSocialLinks() {
         className={[style['add-social-btn'], 'btn-style-1'].join(' ')}
         onClick={() => setIsLinksOpen(!isLinksOpen)}
       >
-        <BsPlusLg /> Add Social Links
+        {isLinksOpen ? <FaMinus /> : <BsPlusLg />} Add Social Links
       </button>
       {isLinksOpen && (
         <div>
