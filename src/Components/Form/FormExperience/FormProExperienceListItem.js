@@ -39,7 +39,7 @@ function FormProExperienceListItem({
                 onChange={(e) => {
                   onChangeHandler(e, id);
                 }}
-                value={value}
+                value={isActive ? '' : value}
               />
             </div>
           );

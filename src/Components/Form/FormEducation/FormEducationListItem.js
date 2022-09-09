@@ -30,7 +30,7 @@ function FormEducationListItem({ id, type, name }) {
                 onChange={(e) => {
                   onChangeHandler(e, id);
                 }}
-                value={value}
+                value={isActive ? '' : value}
               />
             </div>
           );
