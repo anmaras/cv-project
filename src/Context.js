@@ -62,15 +62,29 @@ const linkListData = {
   id: uuid(),
 };
 
+const getLocalStorage = () => {
+  const personal = localStorage.getItem('personal');
+  const social = localStorage.getItem('socialLinks');
+  const education = localStorage.getItem('education');
+  const work = localStorage.getItem('work');
+
+  return {
+    personal: personal ? JSON.parse(personal) : personalData,
+    education: education ? JSON.parse(education) : eduFormListInitialValue,
+    work: work ? JSON.parse(work) : expFormListInitialValue,
+    social: social ? JSON.parse(social) : [linkListData],
+  };
+};
+
 function Context({ children }) {
-  const [personalInfo, setPersonalInfo] = useState(personalData);
+  const [personalInfo, setPersonalInfo] = useState(getLocalStorage().personal);
   const [educationFormList, setEducationFormList] = useState(
-    eduFormListInitialValue
+    getLocalStorage().education
   );
-  const [workXpFormList, setWorkXpFormList] = useState(expFormListInitialValue);
+  const [workXpFormList, setWorkXpFormList] = useState(getLocalStorage().work);
   const [isLinksOpen, setIsLinksOpen] = useState(false);
   const [isLinkListMaxed, setIsLinkListMaxed] = useState(false);
-  const [linkList, setLinkList] = useState([linkListData]);
+  const [linkList, setLinkList] = useState(getLocalStorage().social);
   const [isJobInfoActive, setIsJobInfoActive] = useState(true);
 
   /*---- HEADER LINKS FUNCTIONALITY START ----*/
@@ -203,6 +217,13 @@ function Context({ children }) {
   const resetEducationForm = () =>
     setEducationFormList(eduFormListInitialValue);
   const resetExperienceForm = () => setWorkXpFormList(expFormListInitialValue);
+
+  useEffect(() => {
+    localStorage.setItem('personal', JSON.stringify(personalInfo));
+    localStorage.setItem('socialLinks', JSON.stringify(linkList));
+    localStorage.setItem('education', JSON.stringify(educationFormList));
+    localStorage.setItem('work', JSON.stringify(workXpFormList));
+  }, [personalInfo, linkList, educationFormList, workXpFormList]);
 
   return (
     <AppContext.Provider
