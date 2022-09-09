@@ -5,7 +5,13 @@ import CheckBox from '../../Ui/CheckBox';
 import { getSelectedObj } from '../../../Utilities';
 import { useGlobalContext } from '../../../Context';
 
-function FormProExperienceListItem({ id, type, name, jobSpecifics }) {
+function FormProExperienceListItem({
+  id,
+  type,
+  name,
+  jobSpecifics,
+  isSelected,
+}) {
   const { removeItemFromLists, onChangeHandler, workXpFormList } =
     useGlobalContext();
 
@@ -45,7 +51,11 @@ function FormProExperienceListItem({ id, type, name, jobSpecifics }) {
           onChange={onChangeHandler}
         />
       </form>
-      <FormExperienceExtraInfo id={id} jobSpecifics={jobSpecifics} />
+      <FormExperienceExtraInfo
+        id={id}
+        jobSpecifics={jobSpecifics}
+        isSelected={isSelected}
+      />
       <button
         className={[style['delete-experience-btn'], 'btn-style-1'].join(' ')}
         onClick={() => {
