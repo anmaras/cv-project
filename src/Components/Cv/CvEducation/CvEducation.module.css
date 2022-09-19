@@ -1,4 +1,5 @@
 .education-section {
+  grid-column: 1;
   border-right: 1px solid black;
   padding-block: 1rem;
   padding-right: 1rem;
@@ -33,10 +34,4 @@
 
 .subject {
   font-weight: 400;
-}
-
-@media (min-width: 1440px) {
-  .education-section {
-    grid-column: 1;
-  }
 }
