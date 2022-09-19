@@ -32,7 +32,7 @@ This project was very fun to do and a learn a lot about
 
 - React Router
 
-Also working with css modules and react was a breeze for me because i had a better organization and control over the style of each component and finally when i want to make a print of my final cv the react-to-print library was very useful.
+Also working with css modules and react was a breeze for me because i had a better organization and control over the style of each component and finally when i want to make a print of my final cv the react-to-print library is very useful.
 
 ## Future Improvements
 
