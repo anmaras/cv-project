@@ -29,6 +29,7 @@
   --darker-blue-color: #62a6ff;
   --light-grey: #ccc;
   --white: #fff;
+  --background-clr: rgb(246, 246, 246);
 
   /* shadows */
 
@@ -93,13 +94,16 @@ body {
   display: grid;
   gap: 1rem;
   grid-template-rows: auto 1fr auto;
+  background-color: var(--background-clr);
 }
 
 main {
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-column: var(--cv-width);
+  grid-template-rows: 1fr;
   gap: 2rem;
+  padding-inline: 1rem;
 }
 
 header {
@@ -164,6 +168,11 @@ select {
   font-size: 0.87rem;
 }
 
+.print-btn {
+  justify-self: center;
+  grid-column: 1/-1;
+}
+
 .btn-style-1,
 .btn-style-2 {
   border: thin solid white;
@@ -207,6 +216,7 @@ fieldset {
 }
 
 legend {
+  font-size: var(--fs-normal);
   padding-inline: 0.2rem;
 }
 
