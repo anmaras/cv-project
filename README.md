@@ -37,5 +37,6 @@ Also working with css modules and react was a breeze for me because i had a bett
 ## Future Improvements
 
 - mobile support
+- better responsive design
 
 ## [Live Demo](https://react-cv-generator.netlify.app/)
