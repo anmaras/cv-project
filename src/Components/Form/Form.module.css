@@ -6,6 +6,10 @@
   gap: 0.5rem;
   box-shadow: var(--shadow);
   padding-block: 1rem;
+  background-color: var(--white);
+
+  /* max-width: var(--cv-width); */
+  /* min-width: clamp(var(--cv-width), aut); */
 }
 
 .form-page-links-container {
@@ -24,7 +28,6 @@
 
 .forms-container {
   height: 100%;
-  display: grid;
   padding-inline: 1rem;
   padding-bottom: 1rem;
   overflow: auto;
@@ -43,8 +46,13 @@
 }
 
 .listItem-form-wrapper {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: var(--shadow);
+  padding-inline: 1rem;
+  padding-block: 1rem;
 }
 
 .listItem-form {
@@ -103,14 +111,26 @@
 }
 
 .forms-container::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: var(--darker-blue-color);
 
   border-radius: 20px;
   /* outline: 1px solid slategrey; */
 }
 /* scroll bar styling end */
 
+@media (min-width: 790px) {
+  .forms-section {
+    margin: auto;
+    min-width: var(--cv-width);
+  }
+}
+
 @media (min-width: 1440px) {
+  .forms-section {
+    margin: 0;
+    min-width: inherit;
+  }
+
   /* create education section unique style start */
   .education,
   .experience {
