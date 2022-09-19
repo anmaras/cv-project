@@ -7,7 +7,7 @@
   padding-inline: 3rem;
   padding-block: 1rem;
   box-shadow: var(--shadow);
-  min-width: var(--cv-width);
+  max-width: var(--cv-width);
   min-height: var(--cv-height);
   background-color: var(--white);
   /* display: none; */
