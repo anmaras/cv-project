@@ -100,9 +100,9 @@ body {
 main {
   height: 100%;
   display: grid;
-  grid-column: var(--cv-width);
+  /* grid-column: var(--cv-width); */
   grid-template-rows: 1fr;
-  gap: 2rem;
+  gap: 1rem;
   padding-inline: 1rem;
 }
 
