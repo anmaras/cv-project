@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Cv-builder-project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The purpose of this project was to make a cv-application app that the user can create a cv while filling the forms and in the same time can observe how the cv application will look like.
 
-## Available Scripts
+## Build with
 
-In the project directory, you can run:
+- React.js
+- React-router
+- Rect-icons
+- ReactToPrint
+- uuid
 
-### `npm start`
+## Acknowledgement
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The specific project idea was a assignment from the Odin Project curriculum.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What i learned
 
-### `npm test`
+This project was very fun to do and a learn a lot about
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Functional components.
 
-### `npm run build`
+- Project folder structuring
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Forms
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Controlled components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React context API
 
-### `npm run eject`
+- Custom hooks
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React Router
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Also working with css modules and react was a breeze for me because i had a better organization and control over the style of each component and finally when i want to make a print of my final cv the react-to-print library was very useful.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Future Improvements
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- mobile support
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## [Live Demo](https://react-cv-generator.netlify.app/)
